@@ -14,9 +14,9 @@ export default defineConfig({
     Components({
       resolvers: [
         ArcoResolver({
-          sideEffect: true
-        })
-      ]
-    })
+          sideEffect: true,
+        }),
+      ],
+    }),
   ],
 });
