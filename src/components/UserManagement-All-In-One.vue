@@ -53,7 +53,7 @@ watchEffect(() => {
   // 计算人员总数
   itemLength.value = items.length;
 
-  // 生成要朗读的文本数组（当队列中的数据循环完一次后才开始生成新的阅读列表）
+  // 生成要朗读的文本数组（当阅读队列中的数据朗读完毕后才开始生成新的阅读列表）
   if (!isNameReadQueueLoopFinished.value) {
     return;
   }
@@ -90,7 +90,7 @@ watchEffect(async () => {
     // 标记阅读队列已循环朗读完毕
     isNameReadQueueLoopFinished.value = true;
     setTimeout(() => {
-      // 当阅读队列中的数据朗读完毕之后（loop end），必须将索引值改为 -1，因为当队列中只有一条数据时，索引将始终为0，这导致源数据始终不会发生变化，从而不会引发 watchEffect 执行
+      // 当阅读队列中的数据朗读完毕之后（loop end），必须将索引值改为 -1，因为当队列中只有一条数据时，索引将始终为 0，这导致源数据始终不会发生变化，从而不会引发 watchEffect 执行
       index.value = -1;
     }, 0);
   }
