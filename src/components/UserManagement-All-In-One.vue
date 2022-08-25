@@ -87,9 +87,9 @@ watchEffect(async () => {
       index.value++;
     }, 0);
   } else {
+    // 标记阅读队列已循环朗读完毕
+    isNameReadQueueLoopFinished.value = true;
     setTimeout(() => {
-      // 标记阅读队列已循环朗读完毕
-      isNameReadQueueLoopFinished.value = true;
       // 当阅读队列中的数据朗读完毕之后（loop end），必须将索引值改为 -1，因为当队列中只有一条数据时，索引将始终为0，这导致源数据始终不会发生变化，从而不会引发 watchEffect 执行
       index.value = -1;
     }, 0);
