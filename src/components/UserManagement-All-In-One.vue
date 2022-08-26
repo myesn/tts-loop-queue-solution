@@ -76,8 +76,7 @@ watchEffect(async () => {
   if (index.value === -1) {
     index.value = 0;
   }
-
-  await tts.init();
+  
   await tts.speak(nameReadQueue[index.value]);
 
   // 依次朗读阅读队列中的文本，当朗读完最后一项时，又从头开始朗读

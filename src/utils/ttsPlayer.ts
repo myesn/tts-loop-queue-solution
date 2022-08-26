@@ -10,9 +10,9 @@ export class TTSPlayer {
   private isReadyToSpeak = false;
 
   /** 开始朗读（默认在清空话语队列后朗读） */
-  speak(text: string, cancelQueue = true) {
+  async speak(text: string, cancelQueue = true) {
     if (!this.isReadyToSpeak) {
-      throw new Error('请调用 await [TTSPlayer Instance].init() 初始化内部所属的必要数据');
+      await this.init();
     }
 
     // 在朗读前清空话语队列
@@ -60,7 +60,7 @@ export class TTSPlayer {
   }
 
   /** 初始化必要的内部参数 */
-  async init() {
+  private async init() {
     if (this.isReadyToSpeak) {
       return;
     }
